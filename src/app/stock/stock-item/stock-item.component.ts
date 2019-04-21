@@ -9,7 +9,7 @@ import { Stock } from 'src/app/model/stock/stock.component';
 export class StockItemComponent implements OnInit {
 
   @Input() public stock: Stock;
-  @Output() private toggleFavorite: EventEmitter<Stock>;
+  @Output() public toggleFavorite: EventEmitter<Stock>;
 
   constructor() {
     this.toggleFavorite = new EventEmitter<Stock>();

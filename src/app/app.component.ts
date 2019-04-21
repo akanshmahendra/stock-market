@@ -11,8 +11,7 @@ export class AppComponent implements OnInit{
   public stock: Stock;
 
   ngOnInit(): void {
-    this.stock = new Stock('Test Stock Company - ', 'TSC', 85, 80);
-    console.log('App Component - On Init');
+    this.stock = new Stock('Test Stock Company', 'TSC', 85, 80);
   }
 
   onToggleFavorite(stock: Stock) {
