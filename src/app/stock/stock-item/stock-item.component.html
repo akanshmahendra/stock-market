@@ -3,5 +3,5 @@
     {{ stock.name + ' (' + stock.code + ')'}}
   </div>
   <div class="price" [ngClass]="stockClasses">$ {{ stock.price }}</div>
-  <button (click)="toggleFavorite($event)" *ngIf="!stock.favorite">Add to Favorite</button>
+  <button (click)="onToggleFavorite($event)" *ngIf="!stock.favorite">Add to Favorite</button>
 </div>

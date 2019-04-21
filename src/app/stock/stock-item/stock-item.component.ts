@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Stock } from 'src/app/model/stock/stock.component';
 
 @Component({
@@ -8,28 +8,17 @@ import { Stock } from 'src/app/model/stock/stock.component';
 })
 export class StockItemComponent implements OnInit {
 
-  public stock: Stock;
-  public stockClasses;
+  @Input() public stock: Stock;
+  @Output() private toggleFavorite: EventEmitter<Stock>;
 
-  constructor() { }
-
-  ngOnInit() {
-
-    this.stock = new Stock('Test Stock Company', 'TSC', 85, 80);
-    let diff = (this.stock.price / this.stock.previousPrice) - 1;
-    let largeChange = Math.abs(diff) > 0.01;
-    this.stockClasses = {
-      'positive': this.stock.isPositiveChange(),
-      'negative': !this.stock.isPositiveChange(),
-      'large-change': largeChange,
-      'small-change': !largeChange
-    };
-
+  constructor() {
+    this.toggleFavorite = new EventEmitter<Stock>();
   }
 
-  toggleFavorite(event) {
-    console.log('We are toggling the favorite state for this stock', event);
-    this.stock.favoite = !this.stock.favoite;
+  ngOnInit() { }
+
+  onToggleFavorite() {
+    this.toggleFavorite.emit(this.stock);
   }
 
 }

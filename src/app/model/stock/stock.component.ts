@@ -1,6 +1,6 @@
 export class Stock {
 
-  favoite: boolean = false;
+  favorite: boolean = false;
 
   constructor(public name: string, public code: string, public price: number, public previousPrice: number) {}
 
